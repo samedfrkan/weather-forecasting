@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +8,23 @@
 </head>
 <body>
   <div class="container">
-    <h1>Hava Durumu Tahmin Sistemi</h1>
+    <h1>Hava Durumu Tahmini</h1>
     <form id="weather-form">
-      <label for="city">Şehir:</label>
-      <input type="text" id="city" placeholder="Şehir adı giriniz" required>
-      
-      <label for="date">Tarih:</label>
-      <input type="date" id="date" required>
-      
+      <div class="form-group">
+        <label for="city">Şehir Seçiniz:</label>
+        <select id="city" name="city">
+          <option>Çorlu</option>
+          <option>Erzurum</option>
+          <option>Trabzon</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="date">Tarih:</label>
+        <input type="date" id="date" name="date" required>
+      </div>
       <button type="submit">Tahmin Al</button>
     </form>
-
-    <div id="results" class="hidden">
-      <h2>Tahmin Sonuçları</h2>
-      <p><strong>Sıcaklık:</strong> <span id="temperature"></span> °C</p>
-      <p><strong>Rüzgar Hızı:</strong> <span id="wind-speed"></span> km/h</p>
-      <p><strong>Nem:</strong> <span id="humidity"></span> %</p>
-      <p><strong>Basınç:</strong> <span id="pressure"></span> hPa</p>
-    </div>
+    <div id="result"></div>
   </div>
   <script src="script.js"></script>
 </body>

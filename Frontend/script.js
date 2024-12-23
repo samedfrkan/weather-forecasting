@@ -1,32 +1,51 @@
-document.getElementById('weather-form').addEventListener('submit', async (event) => {
-  event.preventDefault();
+// Form gönderimi için event listener ekle
+document.getElementById("weather-form").addEventListener("submit", function (event) {
+  event.preventDefault(); // Sayfanın yeniden yüklenmesini engelle
 
-  const city = document.getElementById('city').value;
-  const date = document.getElementById('date').value;
+  // Kullanıcıdan alınan verileri al
+  const city = document.getElementById("city").value;
+  const date = document.getElementById("date").value;
 
-  try {
-    
-    const response = await fetch("http://127.0.0.1:5000/predict", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ city, date }),
-    });
+  // Tahmin sonucu göstermek için yapay bir örnek
+  const resultDiv = document.getElementById("result");
 
-    if (!response.ok) throw new Error("Tahmin alınırken hata oluştu!");
-
-    const data = await response.json();
-    const predictions = data.predictions;
-
-    
-    document.getElementById('temperature').textContent = predictions.temperature;
-    document.getElementById('wind-speed').textContent = predictions.wind_speed;
-    document.getElementById('humidity').textContent = predictions.humidity;
-    document.getElementById('pressure').textContent = predictions.pressure;
-
-    document.getElementById('results').classList.remove('hidden');
-  } catch (error) {
-    alert("Bir hata oluştu: " + error.message);
+  // Şehirler için detaylı hava durumu tahmini
+  let weatherForecast;
+  switch (city) {
+    case "Çorlu":
+      weatherForecast = `
+        Şehir: Çorlu
+        Tarih: ${date}
+        Sıcaklık: 28°C
+        Basınç: 1015 hPa
+        Nem: %40
+        Rüzgar Hızı: 15 km/s
+      `;
+      break;
+    case "Erzurum":
+      weatherForecast = `
+        Şehir: Erzurum
+        Tarih: ${date}
+        Sıcaklık: -5°C
+        Basınç: 1020 hPa
+        Nem: %30
+        Rüzgar Hızı: 10 km/s
+      `;
+      break;
+    case "Trabzon":
+      weatherForecast = `
+        Şehir: Trabzon
+        Tarih: ${date}
+        Sıcaklık: 18°C
+        Basınç: 1012 hPa
+        Nem: %70
+        Rüzgar Hızı: 20 km/s
+      `;
+      break;
+    default:
+      weatherForecast = "Hava durumu bilgisi bulunamadı.";
   }
+
+  // Sonucu kullanıcıya göster
+  resultDiv.textContent = weatherForecast;
 });

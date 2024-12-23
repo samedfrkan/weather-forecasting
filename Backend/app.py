@@ -1,37 +1,40 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    try:
-        data = request.get_json()
-
-        if not data:
-            return jsonify({"error": "No data provided"}), 400
-
-        city = data.get('city')
-        date = data.get('date')
-
-        if not city or not date:
-            return jsonify({"error": "City and date are required"}), 400
-
-        # Örnek tahmin sonuçları
-        predictions = {
-            "temperature": 22.5,  # Tahmini sıcaklık (°C)
-            "wind_speed": 15.2,   # Tahmini rüzgar hızı (km/h)
-            "humidity": 65,       # Tahmini nem (%)
-            "pressure": 1013.2    # Tahmini basınç (hPa)
-        }
-
-        
-        return jsonify({"city": city, "date": date, "predictions": predictions})
+    data = request.json
+    city = data.get('city')
+    date = data.get('date')
     
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    # Şehir bazlı tahmin
+    if city == 'corlu':
+        prediction = {
+            "temperature": 22.5,
+            "wind_speed": 5.2,
+            "humidity": 65,
+            "pressure": 1012
+        }
+    elif city == 'erzurum':
+        prediction = {
+            "temperature": 5.3,
+            "wind_speed": 3.1,
+            "humidity": 72,
+            "pressure": 1024
+        }
+    elif city == 'trabzon':
+        prediction = {
+            "temperature": 18.7,
+            "wind_speed": 4.5,
+            "humidity": 80,
+            "pressure": 1018
+        }
+    else:
+        return jsonify({"error": "Geçersiz şehir!"}), 400
 
+    # Tahmin sonuçları
+    return jsonify({"predictions": prediction})
 
 if __name__ == '__main__':
     app.run(debug=True)
