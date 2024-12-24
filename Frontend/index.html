@@ -5,9 +5,119 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hava Durumu Tahmini</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <div class="container">
+  <div class="main-container" >
+
+    <div class="top-container">
+      <div class="city-temperature">
+        <p class="temperature">13C</p>
+        <p class="city">Ankara</p>
+      </div>
+    </div>
+    
+    <div class="bottom-container">
+      <div class="bottom-left-container">
+        <div class="grid">
+          <div class="grid-item" id="humidity">
+            <div class="grid-content">
+              <div class="icon"><i class="fas fa-tint"></i></div>
+              <div class="content-detail" >
+                <p class="grid-text">Nem:</p>
+                <p>%70</p>
+              </div>
+            </div>
+          </div>
+    
+          <div class="grid-item" id="pressure">
+            <div class="grid-content">
+              <div class="icon"><i class="fas fa-tachometer-alt"></i></div>
+              <div class="content-detail">
+                <p class="grid-text">Basınç:</p>
+                <p>1012 hPa</p>
+              </div>
+            </div>
+          </div>
+    
+          <div class="grid-item" id="wind-speed">
+            <div class="grid-content">
+              <div class="icon"><i class="fas fa-wind"></i></div>
+              <div class="content-detail">
+                <p class="grid-text">Rüzgar Hızı:</p>
+                <p>20 km/s</p>
+              </div>
+            </div>
+          </div>
+    
+          <div class="grid-item" id="temperature">
+            <div class="grid-content">
+              <div class="icon"><i class="fas fa-thermometer-half"></i></div>
+              <div class="content-detail">
+                <p class="grid-text">Sıcaklık:</p>
+                <p>18°C</p>
+              </div>
+            </div>
+          </div>
+    
+        </div>
+      </div>
+
+
+      <div class="bottom-right-container">
+        <div class="grid-right">
+          <div class="grid-item-right" id="hour-1">01:00</div>
+          <div class="grid-item-right" id="hour-2">02:00</div>
+          <div class="grid-item-right" id="hour-3">03:00</div>
+          <div class="grid-item-right" id="hour-4">04:00</div>
+          <div class="grid-item-right" id="hour-5">05:00</div>
+          <div class="grid-item-right" id="hour-6">06:00</div>
+          <div class="grid-item-right" id="hour-7">07:00</div>
+          <div class="grid-item-right" id="hour-8">08:00</div>
+          <div class="grid-item-right" id="hour-9">09:00</div>
+          <div class="grid-item-right" id="hour-10">10:00</div>
+          <div class="grid-item-right" id="hour-11">11:00</div>
+          <div class="grid-item-right" id="hour-12">12:00</div>
+        </div>
+        <div class="seven-days">
+          <div class="day" id="day-1">
+            <p class="day-name">P</p>
+            <p class="day-temp">18°C</p>
+          </div>
+          <div class="day" id="day-2">
+            <p class="day-name">S</p>
+            <p class="day-temp">20°C</p>
+          </div>
+          <div class="day" id="day-3">
+            <p class="day-name">Ç</p>
+            <p class="day-temp">22°C</p>
+          </div>
+          <div class="day" id="day-4">
+            <p class="day-name">P</p>
+            <p class="day-temp">19°C</p>
+          </div>
+          <div class="day" id="day-5">
+            <p class="day-name">C</p>
+            <p class="day-temp">21°C</p>
+          </div>
+          <div class="day" id="day-6">
+            <p class="day-name">CT</p>
+            <p class="day-temp">23°C</p>
+          </div>
+          <div class="day" id="day-7">
+            <p class="day-name">P</p>
+            <p class="day-temp">17°C</p>
+          </div>
+        </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- <div class="container">
     <h1>Hava Durumu Tahmini</h1>
     <form id="weather-form">
       <div class="form-group">
@@ -25,7 +135,7 @@
       <button type="submit">Tahmin Al</button>
     </form>
     <div id="result"></div>
-  </div>
+  </div> -->
   <script src="script.js"></script>
 </body>
 </html>
